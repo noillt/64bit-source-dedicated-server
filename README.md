@@ -1,3 +1,12 @@
+<p align="center">
+ ██████╗ ██╗  ██╗██████╗ ███████╗██████╗ ███████╗
+██╔════╝ ██║  ██║██╔══██╗██╔════╝██╔══██╗██╔════╝
+███████╗ ███████║██████╔╝███████╗██║  ██║███████╗
+██╔═══██╗╚════██║██╔══██╗╚════██║██║  ██║╚════██║
+╚██████╔╝     ██║██████╔╝███████║██████╔╝███████║
+ ╚═════╝      ╚═╝╚═════╝ ╚══════╝╚═════╝ ╚══════╝
+</p>
+
 How to guide on installing and starting a 64-bit Counter-Strike: Source or Half-Life Deathmatch: Source, Half-Life 2: Deathmatch, Day of Defeat: Source dedicated server
 
 # Prerequisites
@@ -20,7 +29,7 @@ Confirm `libncurses5 libncurses5:i386 lib32z1` dependencies were installed
 
 ```sh
 git clone https://github.com/noillt/64bit-source-dedicated-server.git && cd 64bit-source-dedicated-server
-./run.sh css # or hldm,dods,hl2dm
+./install-server.sh css # or dods,hldm,hl2dm
 ```
 
 # Manually
@@ -35,7 +44,7 @@ cd 64bit-source-dedicated-server
 > [!NOTE]
 > This also applies to HL:DM, DOD:S, HL2:DM! Just replace `css` with `{hldm,dods,hl2dm}` in this guide and scripts
 ```sh
-export servertoinstall="changeme" # to css,hldm,dods,hl2dm
+export servertoinstall="changeme" # to hldm,dods,hl2dm
 sed -i "s/update_css_/update_$servertoinstall\_/g" README.md
 sed -i "s/css-serverfiles/$servertoinstall-serverfiles/g" README.md
 sed -i "s/css-serverfiles/$servertoinstall-serverfiles/g" run.sh
@@ -94,6 +103,14 @@ ln -sf $steamclient64bit $HOME/css-serverfiles/bin/linux64/steamclient.so
 ### Confirm working server:
 
 ```sh
-cd css-serverfiles
-./srcds_run_64 -game cstrike +map de_dust2 -debug
+cd $HOME/css-serverfiles
+# Run the one matching your game
+# css
+    ./srcds_run_64 -game cstrike +map de_dust2 -debug
+# dods
+    ./srcds_run_64 -game dods +map dod_anzio -debug
+# hldm
+    ./srcds_run_64 -game hl1mp +map crossfire -debug
+# hl2dm
+    ./srcds_run_64 -game hl2mp +map dm_lockdown -debug
 ```
