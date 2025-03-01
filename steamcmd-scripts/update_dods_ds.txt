@@ -1,0 +1,8 @@
+// update_dods_ds.txt
+//
+@ShutdownOnFailedCommand 1 
+@NoPromptForPassword 1
+force_install_dir /home/server/dods-serverfiles
+login anonymous
+app_update 232290 validate
+quit

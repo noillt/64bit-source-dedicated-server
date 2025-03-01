@@ -1,0 +1,8 @@
+// update_hldm_ds.txt
+//
+@ShutdownOnFailedCommand 1 
+@NoPromptForPassword 1
+force_install_dir /home/server/hldm-serverfiles
+login anonymous
+app_update 255470 validate
+quit
