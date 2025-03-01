@@ -108,23 +108,12 @@ remove_tf2() {
 }
 
 symlink_binaries() {
-  echo "Symlinking linux64 binaries..."
   cd "$DSDIR/bin/linux64"
 
-  echo "Symlinking 64-bit binaries..."
-  ln -s datacache_srv.so datacache.so;
-  ln -s dedicated_srv.so dedicated.so;
-  ln -s engine_srv.so engine.so;
-  ln -s libtier0_srv.so libtier0.so;
-  ln -s libvstdlib_srv.so libvstdlib.so;
-  ln -s materialsystem_srv.so materialsystem.so;
-  ln -s replay_srv.so replay.so;
-  ln -s scenefilecache_srv.so scenefilecache.so;
-  ln -s shaderapiempty_srv.so shaderapiempty.so;
-  ln -s soundemittersystem_srv.so soundemittersystem.so;
-  ln -s studiorender_srv.so studiorender.so;
-  ln -s vphysics_srv.so vphysics.so;
-  ln -s vscript_srv.so vscript.so;
+  for file in *_srv.so; do
+    echo "Symlinking \"$file\" to \"${file/_srv/}"
+    ln -s "$file" "${file/_srv/}"
+  done
 }
 
 steamclient_binary() {
@@ -157,10 +146,19 @@ main() {
     *) ;;
   esac
 
-  echo "Successfully installed $GAMESERVER dedicated server to $DSDIR!\n"
-  echo "Confirm the server starts and runs without issue:"
-  echo "    cd $DSDIR"
-  echo "    ./srcds_run_64 -game $SRCDSGAME +map $SRCDSMAP -debug"
+  cat <<SUCESSMSG
+# --------------------------------------------------- #
+
+Successfully installed $GAMESERVER dedicated server
+ to $DSDIR!
+
+Confirm the server starts and runs without issue:
+  $ cd $DSDIR
+  $ ./srcds_run_64 -game $SRCDSGAME +map $SRCDSMAP -debug
+
+# --------------------------------------------------- #
+SUCESSMSG
+
 }
 
 main "$@"
