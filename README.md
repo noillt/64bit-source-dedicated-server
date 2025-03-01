@@ -1,11 +1,11 @@
-<p align="center">
+```
  ██████╗ ██╗  ██╗██████╗ ███████╗██████╗ ███████╗
 ██╔════╝ ██║  ██║██╔══██╗██╔════╝██╔══██╗██╔════╝
 ███████╗ ███████║██████╔╝███████╗██║  ██║███████╗
 ██╔═══██╗╚════██║██╔══██╗╚════██║██║  ██║╚════██║
 ╚██████╔╝     ██║██████╔╝███████║██████╔╝███████║
  ╚═════╝      ╚═╝╚═════╝ ╚══════╝╚═════╝ ╚══════╝
-</p>
+```
 
 How to guide on installing and starting a 64-bit Counter-Strike: Source or Half-Life Deathmatch: Source, Half-Life 2: Deathmatch, Day of Defeat: Source dedicated server
 
