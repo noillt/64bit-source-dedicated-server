@@ -74,21 +74,19 @@ rm $HOME/tf2-serverfiles
 
 ### Symlink the 64-bit binaries to themselves
 
+Every `*_srv.so` file in `css-serverfiles/bin/linux64/` needs to be symlinked to the same file without `_srv`.
+```sh
+# Example
+ln -s datacache_srv.so datacache.so;
+#...
+ln -s vscript_srv.so vscript.so;
+```
+
 ```sh
 cd $HOME/css-serverfiles/bin/linux64/
-ln -s datacache_srv.so datacache.so;
-ln -s dedicated_srv.so dedicated.so;
-ln -s engine_srv.so engine.so;
-ln -s libtier0_srv.so libtier0.so;
-ln -s libvstdlib_srv.so libvstdlib.so;
-ln -s materialsystem_srv.so materialsystem.so;
-ln -s replay_srv.so replay.so;
-ln -s scenefilecache_srv.so scenefilecache.so;
-ln -s shaderapiempty_srv.so shaderapiempty.so;
-ln -s soundemittersystem_srv.so soundemittersystem.so;
-ln -s studiorender_srv.so studiorender.so;
-ln -s vphysics_srv.so vphysics.so;
-ln -s vscript_srv.so vscript.so;
+for file in *_srv.so; do
+  ln -s "$file" "${file/_srv/}"
+done
 ```
 
 ### Symlink steamclient.so 64-bit binary
